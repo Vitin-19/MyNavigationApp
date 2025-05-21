@@ -7,7 +7,6 @@ import ProfileScreen from './src/screens/ProfileScreen';
 import LoginScreen from './src/screens/LoginScreen';
 
 const Stack = createStackNavigator();
-const headerColor = '#add8e6';
 
 export default function App(){
     return(
@@ -17,13 +16,13 @@ export default function App(){
             <Stack.Screen name='Login' component={LoginScreen} options={{headerShown: false, headerStyle: styles.header}}/>
             <Stack.Screen name='Details' component={DetailsScreen} options={{ headerStyle: styles.header}}/>
             <Stack.Screen name='Profile' component={ProfileScreen} options={{headerShown:false, headerStyle: styles.header}}/>
-          </Stack.Navigator>.
+          </Stack.Navigator>
         </NavigationContainer>
     );
 };
 
 const styles = StyleSheet.create({
     header:{
-        backgroundColor: headerColor
+        backgroundColor: '#add8e6'
     }
 })

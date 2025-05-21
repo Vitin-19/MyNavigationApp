@@ -36,7 +36,7 @@ export default function ProfileScreen({navigation}){
                             { text:"Cancel"},
                             { text: "Ok", onPress: async() => {
                                 await AsyncStorage.clear();
-                                navigation.navigate('Login')
+                                navigation.navigate('Login');
                             }} 
                         ]
                     )}
