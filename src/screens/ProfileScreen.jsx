@@ -1,14 +1,18 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
-import { View, Text, Button, StyleSheet, Dimensions } from "react-native";
+import { View, Text, Button, StyleSheet, Dimensions, Alert } from "react-native";
 
 const windowWidth = Dimensions.get('window').width;
 
 export default function ProfileScreen({navigation}){
     return(
         <View style= {styles.container}>
-            <Text style= {styles.title}>Home Screen</Text>
-            <View style={styles.buttonContainer}>
-                <Text>Email: {localStorage.getItem("Email")}</Text>
+            <Text style= {styles.title}>Profile</Text>
+            <View style={styles.infoContainer}>
+                <Text style={styles.infoTitle}>Name: <Text style={styles.info}>{AsyncStorage.getItem("name")}</Text></Text>
+            </View>
+            <View style={styles.infoContainer}>
+                <Text style={styles.infoTitle}>Email: <Text style={styles.info}>{AsyncStorage.getItem("email")}</Text></Text>
             </View>
             <View style={styles.buttonContainer}>
                 <Button 
@@ -24,8 +28,18 @@ export default function ProfileScreen({navigation}){
             </View>
             <View style={styles.buttonContainer}>
                 <Button 
-                    title="Go Back"
-                    onPress={() => navigation.goBack()}
+                    title="Log out"
+                    onPress={() => Alert.alert(
+                        "Log out",
+                        "Are you sure that you want to log out ?",
+                        [
+                            { text:"Cancel"},
+                            { text: "Ok", onPress: async() => {
+                                await AsyncStorage.clear();
+                                navigation.navigate('Login')
+                            }} 
+                        ]
+                    )}
                 />
             </View>
         </View>
@@ -42,6 +56,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         marginBottom: 20,
+        textDecorationLine:'underline'
     },
     buttonContainer:{
         backgroundColor: '#add8e6',
@@ -49,4 +64,17 @@ const styles = StyleSheet.create({
         width: windowWidth * 0.5,
         borderRadius: 5,
     },
+    infoContainer:{
+        width: windowWidth * 0.5,
+        margin:5,
+        textDecorationLine:'underline',
+    },
+    info:{
+        textDecorationLine:'underline',
+        fontWeight:'normal'
+    },
+    infoTitle:{
+        fontWeight:'bold'
+    }
+
 });

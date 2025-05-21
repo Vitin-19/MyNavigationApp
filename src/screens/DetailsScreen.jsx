@@ -6,7 +6,7 @@ const windowWidth = Dimensions.get('window').width;
 export default function DetailsScreen({navigation}){
     return(
         <View style= {styles.container}>
-            <Text style= {styles.title}>Home Screen</Text>
+            <Text style= {styles.title}>Details</Text>
             <View style={styles.buttonContainer}>
                 <Button 
                     title="Go to Home"
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         marginBottom: 20,
+        textDecorationLine:'underline'
     },
     buttonContainer:{
         backgroundColor: '#add8e6',

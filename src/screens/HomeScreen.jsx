@@ -1,12 +1,22 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 import { View, Text, Button, StyleSheet, Dimensions } from "react-native";
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function HomeScreen({navigation}){
+export default async function HomeScreen({navigation}){
+    const [firstName, setFirstName] = React.useState(null)
+    React.useEffect(() => {
+        const getName = async () => {
+            const name = await AsyncStorage.getItem("name");
+            setFirstName(name.split(" ")[0]);
+        }
+        getName();
+    })
     return(
         <View style= {styles.container}>
             <Text style= {styles.title}>Home Screen</Text>
+            <Text style={styles.title}>Hello {firstName}</Text>
             <View style={styles.buttonContainer}>
                 <Button 
                     title="Go to Details"
@@ -33,6 +43,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         marginBottom: 20,
+        textDecorationLine:'underline'
     },
     buttonContainer:{
         backgroundColor: '#add8e6',
