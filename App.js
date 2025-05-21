@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
@@ -7,16 +7,23 @@ import ProfileScreen from './src/screens/ProfileScreen';
 import LoginScreen from './src/screens/LoginScreen';
 
 const Stack = createStackNavigator();
+const headerColor = '#add8e6';
 
 export default function App(){
     return(
         <NavigationContainer>
           <Stack.Navigator initialRouteName='Login'>
-            <Stack.Screen name='Home' component={HomeScreen}/>
-            <Stack.Screen name='Login' component={LoginScreen}/>
-            <Stack.Screen name='Details' component={DetailsScreen}/>
-            <Stack.Screen name='Profile' component={ProfileScreen} options={{headerShown:false}}/>
+            <Stack.Screen name='Home' component={HomeScreen} options={{ headerStyle: styles.header}}/>
+            <Stack.Screen name='Login' component={LoginScreen} options={{headerShown: false, headerStyle: styles.header}}/>
+            <Stack.Screen name='Details' component={DetailsScreen} options={{ headerStyle: styles.header}}/>
+            <Stack.Screen name='Profile' component={ProfileScreen} options={{headerShown:false, headerStyle: styles.header}}/>
           </Stack.Navigator>.
         </NavigationContainer>
     );
 };
+
+const styles = StyleSheet.create({
+    header:{
+        backgroundColor: headerColor
+    }
+})
