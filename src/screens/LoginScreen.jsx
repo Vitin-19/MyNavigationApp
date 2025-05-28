@@ -54,7 +54,7 @@ export default function LoginScreen({ navigation }) {
                                 await AsyncStorage.setItem("name", name);
                                 await AsyncStorage.setItem("password", password);
                                 await AsyncStorage.setItem("loginState", JSON.stringify(true));
-                                navigation.navigate('Profile');
+                                navigation.replace('Profile');
                             } else {
                                 showError(true);
                             }
