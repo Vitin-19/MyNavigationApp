@@ -6,23 +6,24 @@ import DetailsScreen from './src/screens/DetailsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import LoginScreen from './src/screens/LoginScreen';
 
+
 const Stack = createStackNavigator();
 
 export default function App(){
     return(
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName='Login'>
-            <Stack.Screen name='Home' component={HomeScreen} options={{ headerStyle: styles.header}}/>
-            <Stack.Screen name='Login' component={LoginScreen} options={{headerShown: false, headerStyle: styles.header}}/>
-            <Stack.Screen name='Details' component={DetailsScreen} options={{ headerStyle: styles.header}}/>
-            <Stack.Screen name='Profile' component={ProfileScreen} options={{headerShown:false, headerStyle: styles.header}}/>
-          </Stack.Navigator>
-        </NavigationContainer>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName='Login'>
+              <Stack.Screen name='Home' component={HomeScreen} options={{ headerStyle: styles.header}}/>
+              <Stack.Screen name='Login' component={LoginScreen} options={{headerShown: false, headerStyle: styles.header}}/>
+              <Stack.Screen name='Details' component={DetailsScreen} options={{ headerStyle: styles.header}}/>
+              <Stack.Screen name='Profile' component={ProfileScreen} options={{headerShown:false, headerStyle: styles.header}}/>
+            </Stack.Navigator>
+          </NavigationContainer>
     );
 };
 
 const styles = StyleSheet.create({
     header:{
         backgroundColor: '#add8e6'
-    }
+    },
 })
