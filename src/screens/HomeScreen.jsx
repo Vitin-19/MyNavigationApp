@@ -16,11 +16,10 @@ export default function HomeScreen({ navigation }) {
             setFirstName(firstName);
         }
         getName();
-    })
+    },[])
     return (
         <Background>
             <View style={styles.container}>
-                {/* <Text style={styles.title}>Home Screen</Text> */}
                 <Text style={styles.title}>Hello {firstName}</Text>
                 <View style={styles.buttonContainer}>
                     <LocalButton onclickFuncion={() => navigation.navigate('Details')}>
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         marginBottom: 20,
-        textDecorationLine: 'underline',
         color:'#f0f8ff'
     },
     buttonText:{

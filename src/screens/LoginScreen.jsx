@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Dimensions, TextInput} from "react-native";
+import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Background from "../components/Background";
@@ -19,12 +19,13 @@ export default function LoginScreen({ navigation }) {
             }
         }
         getLogin();
-    }, [])
+    }, []);
+
     return (
-        <KeyboardAwareScrollView
-            contentContainerStyle={{ flex: 1 }}
-        >
-            <Background>
+        <Background>
+            <KeyboardAwareScrollView
+                contentContainerStyle={{ flex: 1 }}
+            >
                 <View style={styles.container}>
                     <Text style={styles.title}>Login</Text>
                     <View style={styles.inputContainer}>
@@ -55,20 +56,20 @@ export default function LoginScreen({ navigation }) {
                         />
                     </View>
                     <View style={styles.buttonContainer}>
-                        <LocalButton onclickFuncion={async() => {
-                                if (name && email && password) {
-                                    await AsyncStorage.setItem("email", email);
-                                    if(!parseInt(name)) await AsyncStorage.setItem("name", name);else return showError(true);
-                                    await AsyncStorage.setItem("password", password);
-                                    await AsyncStorage.setItem("loginState", JSON.stringify(true));
-                                    navigation.replace('Profile');
-                                } else {
-                                    showError(true);
-                                }
+                        <LocalButton onclickFuncion={async () => {
+                            if (name === "adm" && email === "adm@gmail.com" && password === "@adm123") {
+                                await AsyncStorage.setItem("email", email);
+                                if (!parseInt(name) && name) await AsyncStorage.setItem("name", name); else return showError(true);
+                                await AsyncStorage.setItem("password", password);
+                                await AsyncStorage.setItem("loginState", JSON.stringify(true));
+                                navigation.replace('Profile');
+                            } else {
+                                showError(true);
                             }
-                        }   
+                        }
+                        }
                         >
-                        <Text style={styles.buttonText}>Enter</Text>
+                            <Text style={styles.buttonText}>Enter</Text>
                         </LocalButton>
                     </View>
                     {error && (
@@ -77,10 +78,13 @@ export default function LoginScreen({ navigation }) {
                         </View>
                     )}
                 </View>
-            </Background>
-        </KeyboardAwareScrollView>
+            </KeyboardAwareScrollView>
+        </Background>
+
     );
 };
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginBottom: 20,
         textDecorationLine: 'underline',
-        color:'#f0f8ff'
+        color: '#f0f8ff'
     },
     buttonContainer: {
         backgroundColor: 'transparent',
@@ -100,9 +104,9 @@ const styles = StyleSheet.create({
         width: windowWidth * 0.5,
         borderRadius: 5,
     },
-    buttonText:{
+    buttonText: {
         fontSize: 24,
-        textAlign:'center'
+        textAlign: 'center'
     },
     inputContainer: {
         backgroundColor: 'transparent',
@@ -113,7 +117,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderColor: '#f0f8ff',
         borderWidth: 2,
-        color:'#f0f8ff'
+        color: '#f0f8ff'
     },
     screen_background: {
         flex: 1,
