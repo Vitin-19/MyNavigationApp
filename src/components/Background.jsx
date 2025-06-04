@@ -4,11 +4,11 @@ import { StyleSheet } from 'react-native';
 export default function Background({children}){
     return (
         <LinearGradient
-            colors={['#add8e6', '#f0f8ff']}
+            colors={['#3399ff','#add8e6', '#f0f8ff']}
             style={styles.screen_background}
-            start={{ x: 0.5, y: 0 }}
-            end={{ x: 0.5, y: 1 }}
-            locations={[0.498, 1]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            locations={[0.4, 0.7, 1]}
         >
         {children} 
         </LinearGradient>

@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         marginBottom: 20,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        color:'#f0f8ff'
     },
     buttonContainer: {
-        backgroundColor: '#add8e6',
         margin: 10,
         width: windowWidth * 0.5,
         borderRadius: 5,

@@ -13,7 +13,7 @@ export default function App(){
     return(
           <NavigationContainer>
             <Stack.Navigator initialRouteName='Login'>
-              <Stack.Screen name='Home' component={HomeScreen} options={{ headerStyle: styles.header}}/>
+              <Stack.Screen name='Home' component={HomeScreen} options={{ headerStyle: styles.header, headerTintColor:'#f0f8ff', }}/>
               <Stack.Screen name='Login' component={LoginScreen} options={{headerShown: false, headerStyle: styles.header}}/>
               <Stack.Screen name='Details' component={DetailsScreen} options={{ headerStyle: styles.header}}/>
               <Stack.Screen name='Profile' component={ProfileScreen} options={{headerShown:false, headerStyle: styles.header}}/>
@@ -24,6 +24,6 @@ export default function App(){
 
 const styles = StyleSheet.create({
     header:{
-        backgroundColor: '#add8e6'
+        backgroundColor: '#3399ff',
     },
 })

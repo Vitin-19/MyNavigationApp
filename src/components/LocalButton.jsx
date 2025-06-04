@@ -12,7 +12,6 @@ export default function LocalButton({onclickFuncion,children}) {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: 'transparent',
         borderRadius: 5,
         borderColor:'#f0f8ff',
         borderWidth: 2,

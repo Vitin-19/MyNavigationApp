@@ -33,6 +33,7 @@ export default function LoginScreen({ navigation }) {
                             placeholder="Name"
                             keyboardType="name-phone-pad"
                             onChangeText={setName}
+                            placeholderTextColor={'#f0f8ff'}
                         />
                     </View>
                     <View style={styles.inputContainer}>
@@ -41,6 +42,7 @@ export default function LoginScreen({ navigation }) {
                             placeholder="Email"
                             keyboardType="email-address"
                             onChangeText={setEmail}
+                            placeholderTextColor={'#f0f8ff'}
                         />
                     </View>
                     <View style={styles.inputContainer}>
@@ -49,13 +51,14 @@ export default function LoginScreen({ navigation }) {
                             placeholder="Password"
                             secureTextEntry={true}
                             onChangeText={setPassword}
+                            placeholderTextColor={'#f0f8ff'}
                         />
                     </View>
                     <View style={styles.buttonContainer}>
                         <LocalButton onclickFuncion={async() => {
                                 if (name && email && password) {
                                     await AsyncStorage.setItem("email", email);
-                                    await AsyncStorage.setItem("name", name);
+                                    if(!parseInt(name)) await AsyncStorage.setItem("name", name);else return showError(true);
                                     await AsyncStorage.setItem("password", password);
                                     await AsyncStorage.setItem("loginState", JSON.stringify(true));
                                     navigation.replace('Profile');
@@ -70,7 +73,7 @@ export default function LoginScreen({ navigation }) {
                     </View>
                     {error && (
                         <View style={{ margin: 5 }}>
-                            <Text style={{ color: 'red', fontWeight: 'bold' }}>Missing statements</Text>
+                            <Text style={{ color: 'red', fontWeight: 'bold' }}>Missing statements or invalid informations</Text>
                         </View>
                     )}
                 </View>
@@ -89,6 +92,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginBottom: 20,
         textDecorationLine: 'underline',
+        color:'#f0f8ff'
     },
     buttonContainer: {
         backgroundColor: 'transparent',
@@ -108,7 +112,8 @@ const styles = StyleSheet.create({
         width: windowWidth * 0.5,
         borderRadius: 5,
         borderColor: '#f0f8ff',
-        borderWidth: 2
+        borderWidth: 2,
+        color:'#f0f8ff'
     },
     screen_background: {
         flex: 1,
